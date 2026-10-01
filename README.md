@@ -1,9 +1,13 @@
 Скрипт для извлечения характеристик ПК.
 Я собирал следующие параметры:
-- ОС (название, выпуск, версия, архитектура, имя компьютера) с помощью переменных os.name, os.release, os.version, os.architecture, os.computer_name
-- Версию Python с помощью python.platform, python.version
-- Характеристики процессора - hardware.cpu.model, hardware.cpu.physical_cores, hardware.cpu.logical_cores
-- Количество оперативной памяти - hardware.ram_gb
-- Количество видеокарт и их параметры - hardware.ram_gb
-В ходе работы задействовал библиотеки json (вывод характеристик в отдельный файл), os(получение пути к файлу), platform(информация об ОС и железе), ctypes(чтобы вызвать системные библиотеки, такие как dll и util для поиска библиотеки по имени)
+- ОС: os (строка вида «система + версия», например Windows 11; собирается из platform.system() и platform.release()), architecture (из platform.machine())
+- Характеристики процессора: cpu (название модели), logical_cores (число логических ядер, из os.cpu_count())
+- Количество оперативной памяти: ram_gb
+- Количество видеокарт и их параметры: gpu (список названий видеокарт)
 
+Использованные библиотеки
+json: сохранение характеристик в отдельный файл pc_specs.json (функция save_to_file)
+os: получение числа логических ядер (os.cpu_count()) и размера памяти на macOS (os.sysconf)
+platform: определение системы (Windows, Linux, Darwin), версии ОС и архитектуры
+ctypes: вызов системных библиотек: kernel32.dll на Windows (GetPhysicallyInstalledSystemMemory) и libc на macOS (sysctlbyname)
+winreg (только Windows): чтение названия процессора и видеокарт из реестра
