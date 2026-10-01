@@ -6,8 +6,8 @@
 - Количество видеокарт и их параметры: gpu (список названий видеокарт)
 
 Использованные библиотеки
-json: сохранение характеристик в отдельный файл pc_specs.json (функция save_to_file)
-os: получение числа логических ядер (os.cpu_count()) и размера памяти на macOS (os.sysconf)
-platform: определение системы (Windows, Linux, Darwin), версии ОС и архитектуры
-ctypes: вызов системных библиотек: kernel32.dll на Windows (GetPhysicallyInstalledSystemMemory) и libc на macOS (sysctlbyname)
-winreg (только Windows): чтение названия процессора и видеокарт из реестра
+- json: сохранение характеристик в отдельный файл pc_specs.json (функция save_to_file)
+- os: получение числа логических ядер (os.cpu_count()) и размера памяти на macOS (os.sysconf)
+- platform: определение системы (Windows, Linux, Darwin), версии ОС и архитектуры
+- ctypes: вызов системных библиотек: kernel32.dll на Windows (GetPhysicallyInstalledSystemMemory) и libc на macOS (sysctlbyname)
+- winreg (только Windows): чтение названия процессора и видеокарт из реестра
